@@ -61,8 +61,10 @@ c)Valencia
 d)Leeds
 a
 Hint: A famous treaty was signed here
-A feisty train is the hero of a classic children's book titled The Little Engine That what?
+A feisty train is the hero of a classic children's book titled "The Little Engine That (what?)"
 a)Ran
 b)Cried
 c)Would
 d)Could
+d
+Hint: Rhymes with should
