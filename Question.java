@@ -34,7 +34,7 @@ public class Question {
         System.out.println("Enter your answer: ");
         String inout  = userInput.nextLine();
 
-        
+
     }
 
 
