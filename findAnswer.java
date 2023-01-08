@@ -1,30 +1,57 @@
 import java.io.IOException;
+import java.util.Scanner;
 
 public class findAnswer {
+    static Scanner scanner = new Scanner(System.in);
     static Question question = new Question();
-public static void getQuestions() throws IOException{
-    for(int i=0; i<12; i++){
-        if (i < 4){
-            question.randomQuestion("easy.txt");
+    //static int i = 0;
+    public static boolean correct;
+
+    public static void getQuestions() throws IOException{
+        int i = 0;
+
+
+        do{
+
+            if (i < 4){
+                question.randomQuestion("easy.txt");
+                if(!question.checkChoice()){
+                    System.out.println(i);
+                    correct = false;
+                }
+                else {
+                    correct = true;
+                    i++;
+                }
+            }
+            else if (i >= 4 && i <= 8){
+                question.randomQuestion("medium.txt");
+                if(!question.checkChoice()){
+                    System.out.println(i);
+                    correct = false;
+                }
+                else {
+                    correct = true;
+                    i++;
+                }
+            }
+            else if (i > 8){
+                question.randomQuestion("hard.txt");
+                if(!question.checkChoice()){
+                    System.out.println(i);
+                    correct = false;
+                }
+                else {
+                    correct = true;
+                    i++;
+                }
+            }
         }
-        else if (i >= 4 && i <= 8){
-            question.randomQuestion("hard.txt");
-        }
-        else if (i > 8){
-            question.randomQuestion("medium.txt");
-        }
+        while(correct);
+
+    }
+    public static void main(String[] args) throws IOException {
+        getQuestions();
     }
 
-}
-
-//    public static void correctAnswer() throws IOException {
-//        Random random = new Random();
-//        int i = (rn.nextInt(3)) * 7;
-//        for (int l = 0; l < 5; l++) {
-//            String line = Files.readAllLines(Paths.get("easy.txt")).get(i + l);
-//            //   String line33 = Files.readAllLines(Paths.get("easy.txt")).get(i + 1);
-//            System.out.println(line);
-//            // System.out.println(line33);
-//        }
-//    }
 }
