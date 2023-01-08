@@ -39,13 +39,13 @@ b.1
 c.All of them
 d.Depends on if there's a leap year or not
 c
-HINT: Think
+HINT: Not only 28 days.
 What is Luka's Last Name?
 a.Gorgasali
 b.Donic
 c.Karkuzashvili
 d.Kragaokglkali
-a
+c
 HINT: Try to remember hard
 A farmer has 17 goats, All of them but 8 died. How many goats are alive? 
 a.9
