@@ -73,7 +73,8 @@ public class findAnswer {
 
     }
     public static void main(String[] args) throws IOException {
-
+        GameRules G=new GameRules();
+        G.Greetings();
         getQuestions();
 
     }

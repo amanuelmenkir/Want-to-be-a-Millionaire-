@@ -19,10 +19,10 @@ public class GameRules {
 
             System.out.println("Hello "+playerName+"! "+ "Here are the rules: " );
             System.out.println("In order to play this game, you need to enter your name first" +
-                    "\n\nOnce the questions pops up you can ask for hints, but you will get only 3 hints throughout the whole game"+
-                    "\n\nTo advance towards the next levels, you need to answer questions correctly, after each " +
-                    "correctly answered question,\n\nyou will need to decide to keep your score and leave or to keep " +
-                    "going to next rounds.\n\nYou win when you reach one million dollars.");
+                    "\nOnce the questions pops up you can ask for hints, but you will get only 3 hints throughout the whole game"+
+                    "\nTo advance towards the next levels, you need to answer questions correctly, after each " +
+                    "correctly answered question,\nyou will need to decide to keep your score and leave or to keep " +
+                    "going to next rounds.\nYou win when you reach one million dollars.");
 
 
 
