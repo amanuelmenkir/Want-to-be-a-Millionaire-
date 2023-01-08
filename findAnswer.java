@@ -3,8 +3,6 @@ import java.util.Scanner;
 
 public class findAnswer {
     static Scanner scanner = new Scanner(System.in);
-    static Question question = new Question();
-    //static int i = 0;
     public static boolean correct;
 
     public static void getQuestions() throws IOException{
@@ -14,9 +12,8 @@ public class findAnswer {
         do{
 
             if (i < 4){
-                question.randomQuestion("easy.txt");
-                if(!question.checkChoice()){
-                    System.out.println(i);
+                Question.randomQuestion("easy.txt");
+                if(!Question.checkChoice()){
                     correct = false;
                 }
                 else {
@@ -25,9 +22,8 @@ public class findAnswer {
                 }
             }
             else if (i >= 4 && i <= 8){
-                question.randomQuestion("medium.txt");
-                if(!question.checkChoice()){
-                    System.out.println(i);
+                Question.randomQuestion("medium.txt");
+                if(!Question.checkChoice()){
                     correct = false;
                 }
                 else {
@@ -36,9 +32,8 @@ public class findAnswer {
                 }
             }
             else if (i > 8){
-                question.randomQuestion("hard.txt");
-                if(!question.checkChoice()){
-                    System.out.println(i);
+                Question.randomQuestion("hard.txt");
+                if(!Question.checkChoice()){
                     correct = false;
                 }
                 else {
