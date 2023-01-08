@@ -46,7 +46,6 @@ public class Question {
 
     public static void main(String[] args) throws IOException {
         randomQuestion("easy.txt");
-       // System.out.println(answer);
         System.out.println(checkChoice());
 
     }
