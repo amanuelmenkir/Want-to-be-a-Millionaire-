@@ -25,27 +25,32 @@ public class Question {
     }
 
     public static String getChoice(){
-        Scanner myObj = new Scanner(System.in);  // Create a Scanner object
+        Scanner myObj = new Scanner(System.in);
         System.out.println("Enter Your answer");
         choice = myObj.nextLine();
         return choice;
     }
     public static boolean checkChoice(){
+
         if(getChoice().equalsIgnoreCase(answer)){
             checkAnswer = true;
         }
         else checkAnswer = false;
         return checkAnswer;
     }
-    public static void HintOption(){
-        if(choice.equalsIgnoreCase("e")){
+    public static void HintOption(String userHint){
+
+        if(userHint.equalsIgnoreCase("e")){  //checking if the userHint is e then reading the hint from the file
             System.out.println(hint);
         }
-    }
+        else checkChoice();     //if the user doesn't want hint it will compare the user input to check if it's right or wrong
+        }
+
 
 
     public static void main(String[] args) throws IOException {
-        randomQuestion("easy.txt");
+
+        randomQuestion("easy.txt");  //randomly printing the questions
         System.out.println(checkChoice());
 
     }

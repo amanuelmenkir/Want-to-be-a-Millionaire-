@@ -1,3 +1,5 @@
+
+import java.util.Scanner;
 public class GameRules {
 
 
@@ -7,10 +9,15 @@ public class GameRules {
 
         }
         public void Greetings(){
+            Scanner sc = new Scanner(System.in);
 
 
             System.out.println("Welcome! Ready to Become A Millionaire?");
-            System.out.println("Here are the rules: " );
+
+            System.out.println("Enter your name");
+            String playerName = sc.nextLine();
+
+            System.out.println("Hello "+playerName+"! "+ "Here are the rules: " );
             System.out.println("In order to play this game, you need to enter your name first" +
                     "\n\nOnce the questions pops up you can ask for hints, but you will get only 3 hints throughout the whole game"+
                     "\n\nTo advance towards the next levels, you need to answer questions correctly, after each " +
