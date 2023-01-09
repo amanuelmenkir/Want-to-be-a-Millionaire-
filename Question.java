@@ -5,7 +5,9 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Question {
-    static int hintQuantity = 3;
+    static int hintQuantity = 2;
+    static String list = "0123456789";             // this list has ten elements because we have ten questions in text files
+
 
     static boolean check_answer ;
     static String choice = "";
@@ -13,8 +15,7 @@ public class Question {
     static String hint = "";
     //This method returns random number and removes that number from list
     public static String reduceRandomList(){
-        String list = "0123456789";             // this list has ten elements because we have ten questions in text files
-        String a = String.valueOf(randomNumber(list));
+        String a = String.valueOf(randomNumber(Question.list));
         list= list.replace(a,"");      //randomly chosen number will be replaced with empty space
         System.out.println(a);
         System.out.println(list);
@@ -79,14 +80,21 @@ public class Question {
         return check_answer;
     }
     public static void HintOption(int hintQuantity){
-        if(hintQuantity > 0){
+        if(hintQuantity > 1){
             System.out.println(hint);
-            hintQuantity -=1;
+            Question.hintQuantity -=1;
+            System.out.println("You have "+ hintQuantity  + " hints left");
+
+        }
+        else if(hintQuantity ==1){
+            System.out.println("You have "+ hintQuantity  + " hint left");
+            Question.hintQuantity -=1;
+            System.out.println(hint);
+
         }
         else{
             System.out.println("You can't use more hint.");
         }
-        System.out.println("You have left "+ hintQuantity  + " hints");
     }
 
 

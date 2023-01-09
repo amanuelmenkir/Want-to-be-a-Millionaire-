@@ -2,7 +2,8 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class findAnswer {
-    int hintQuantity = 3;
+    static Question question = new Question();
+    int hintQuantity = 2;
 
     static Scanner scanner = new Scanner(System.in);
     public static boolean correct;
@@ -14,7 +15,7 @@ public class findAnswer {
         do{
 
             if (i < 4){
-                Question.randomQuestion(Question.reduceRandomList(),"easy.txt");
+                question.randomQuestion(question.reduceRandomList(),"easy.txt");
 
 //                System.out.println("Enter 'e' if you want hint! ");
 //                String userHintChoise = scanner.nextLine();
@@ -35,7 +36,7 @@ public class findAnswer {
                 }
             }
             else if (i >= 4 && i <= 8){
-                Question.randomQuestion(Question.reduceRandomList(),"medium.txt");
+                question.randomQuestion(question.reduceRandomList(),"medium.txt");
                 Question.checkChoice();
 
                 if(!Question.checkAnswer()){
