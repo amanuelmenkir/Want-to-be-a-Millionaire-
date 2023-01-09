@@ -2,6 +2,9 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class findAnswer {
+    static Question question = new Question();
+    int hintQuantity = 2;
+
     static Scanner scanner = new Scanner(System.in);
     public static boolean correct;
 
@@ -12,13 +15,13 @@ public class findAnswer {
         do{
 
             if (i < 4){
-                Question.randomQuestion("easy.txt");
-                System.out.println("Enter 'e' if you want hint! ");
-                String userHintChoise = scanner.nextLine();
-                Question.HintOption(userHintChoise);
+                question.randomQuestion(question.reduceRandomList(),"easy.txt");
 
+//                System.out.println("Enter 'e' if you want hint! ");
+//                String userHintChoise = scanner.nextLine();
+                Question.checkChoice();
 
-                if(!Question.checkChoice()){
+                if(!Question.checkAnswer()){
                     correct = false;
                     System.out.println("Sorry,Your answer is wrong! Thanks for playing");
                 }
@@ -33,10 +36,10 @@ public class findAnswer {
                 }
             }
             else if (i >= 4 && i <= 8){
-                Question.randomQuestion("medium.txt");
-                Question.HintOption("");
+                question.randomQuestion(question.reduceRandomList(),"medium.txt");
+                Question.checkChoice();
 
-                if(!Question.checkChoice()){
+                if(!Question.checkAnswer()){
                     correct = false;
                     System.out.println("Sorry,Your answer is wrong! Thanks for playing");
                 }
@@ -51,10 +54,9 @@ public class findAnswer {
                 }
             }
             else if (i > 8){
-                Question.randomQuestion("hard.txt");
-                Question.HintOption(""); //Calling the hinOption method
-
-                if(!Question.checkChoice()){
+                Question.randomQuestion(Question.reduceRandomList(),"hard.txt");
+                Question.checkChoice();
+                if(!Question.checkAnswer()){
                     correct = false;
                     System.out.println("Sorry,Your answer is wrong! Thanks for playing");
                 }

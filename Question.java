@@ -1,6 +1,3 @@
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -8,20 +5,48 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Question {
-    static boolean checkAnswer ;
+    static int hintQuantity = 2;
+    static String list = "0123456789";             // this list has ten elements because we have ten questions in text files
+
+
+    static boolean check_answer ;
     static String choice = "";
     static String answer = "";
     static String hint = "";
-    public static void randomQuestion(String fileName) throws IOException {
+    //This method returns random number and removes that number from list
+    public static String reduceRandomList(){
+        String a = String.valueOf(randomNumber(Question.list));
+        list= list.replace(a,"");      //randomly chosen number will be replaced with empty space
+        System.out.println(a);
+        System.out.println(list);
+
+        return a;
+    }
+    //This method generates random number from string
+    public static char randomNumber(String list){
         Random rn = new Random();
-        int i = (rn.nextInt(10)) * 7;
-        for (int l = 0; l < 5; l++) {
-            String line = Files.readAllLines(Paths.get(String.valueOf(fileName))).get(i+l);
+        int length = list.length();
+        char randomChar = '\0';
+        int randIndex = rn.nextInt(length) ;
+        while (randomChar==' ' || randomChar=='\0'){
+            randomChar = list.charAt(randIndex);
+            randIndex = rn.nextInt(length);
+        }
+        return randomChar;
+    }
+    //This method opens text file and reads questions based on random number
+    public static void randomQuestion( String i,String fileName) throws IOException {
+        int newi = Integer.valueOf(i) *7;           // random number is multiplied by seven to start reading from beginning of question
+        System.out.println(newi);
+        for (int l = 0; l < 5; l++) {               // This for loop prints question and four choices
+            String line = Files.readAllLines(Paths.get(String.valueOf(fileName))).get((newi+l));
             System.out.println(line);
 
         }
-        answer = Files.readAllLines(Paths.get(String.valueOf(fileName))).get(i+5);
-        hint = Files.readAllLines(Paths.get(String.valueOf(fileName))).get(i+6);
+        System.out.println("1. HINT ");
+
+        answer = Files.readAllLines(Paths.get(String.valueOf(fileName))).get(newi +5);      //This is answer for question based on random number
+        hint = Files.readAllLines(Paths.get(String.valueOf(fileName))).get(newi+6);         //This is hint for question based on random number
     }
 
     public static String getChoice(){
@@ -30,28 +55,53 @@ public class Question {
         choice = myObj.nextLine();
         return choice;
     }
-    public static boolean checkChoice(){
+    public static void checkChoice(){
+        getChoice();
+        if(choice.equalsIgnoreCase("1")){
+            HintOption(hintQuantity);
+            getChoice();
 
-        if(getChoice().equalsIgnoreCase(answer)){
-            checkAnswer = true;
         }
-        else checkAnswer = false;
-        return checkAnswer;
+        else if (choice.equalsIgnoreCase("a")||choice.equalsIgnoreCase("b")||
+        choice.equalsIgnoreCase("c") || choice.equalsIgnoreCase("d")){
+            checkAnswer();
+        }
+        else {
+            System.out.println("Please enter valid input");
+            checkChoice();
+        }
+
     }
-    public static void HintOption(String userHint){
-
-        if(userHint.equalsIgnoreCase("e")){  //checking if the userHint is e then reading the hint from the file
+    public static boolean checkAnswer(){
+        if(choice.equalsIgnoreCase(answer)){
+            check_answer = true;
+        }
+        else check_answer = false;
+        return check_answer;
+    }
+    public static void HintOption(int hintQuantity){
+        if(hintQuantity > 1){
             System.out.println(hint);
-        }
-        else checkChoice();     //if the user doesn't want hint it will compare the user input to check if it's right or wrong
-        }
+            Question.hintQuantity -=1;
+            System.out.println("You have "+ hintQuantity  + " hints left");
 
+        }
+        else if(hintQuantity ==1){
+            System.out.println("You have "+ hintQuantity  + " hint left");
+            Question.hintQuantity -=1;
+            System.out.println(hint);
+
+        }
+        else{
+            System.out.println("You can't use more hint.");
+        }
+    }
 
 
     public static void main(String[] args) throws IOException {
-
-        randomQuestion("easy.txt");  //randomly printing the questions
-        System.out.println(checkChoice());
+        // randomQuestion(Question.randomNumber(Question.reduceRandomList()),"easy.txt");
+        // System.out.println(checkChoice());
+        // reduceRandomList();
 
     }
 
