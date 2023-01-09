@@ -2,6 +2,8 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class findAnswer {
+    static int values [] = new int [] {500, 1000, 2000, 5000, 10000, 20000, 50000, 75000, 150000, 250000, 500000, 1000000};
+    public static int newValue = 0;
     static Question question = new Question();
     int hintQuantity = 2;
 
@@ -23,12 +25,14 @@ public class findAnswer {
 
                 if(!Question.checkAnswer()){
                     correct = false;
-                    System.out.println("Sorry,Your answer is wrong! Thanks for playing");
+                    System.out.println("Sorry, your answer is wrong! You win nothing. Thanks for playing! xD");
                 }
                 else {
                     correct = true;
+                    newValue = values[i];
+                    System.out.println("You have won $" + newValue);
                     i++;
-                    System.out.println("Your answer is correct!"+"\nPress Q to quit ir C to continue");
+                    System.out.println("Your answer is correct!"+"\nPress Q to quit or C to continue");
                     String userInput = scanner.nextLine();
                     if (userInput.equalsIgnoreCase("Q")){
                         break;
@@ -41,12 +45,15 @@ public class findAnswer {
 
                 if(!Question.checkAnswer()){
                     correct = false;
-                    System.out.println("Sorry,Your answer is wrong! Thanks for playing");
+                    System.out.println("Sorry,Your answer is wrong! You have won $" + values[3]);
                 }
                 else {
                     correct = true;
+                    newValue = values[i];
+                    System.out.println("You have won $" + newValue);
                     i++;
-                    System.out.println("Your answer is correct!"+"\nPress Q to quit ir C to continue");
+                    System.out.println("Your answer is correct!"+"\nPress Q to quit or C to continue");
+
                     String userInput = scanner.nextLine();
                     if (userInput.equalsIgnoreCase("Q")){
                         break;
@@ -58,12 +65,17 @@ public class findAnswer {
                 Question.checkChoice();
                 if(!Question.checkAnswer()){
                     correct = false;
-                    System.out.println("Sorry,Your answer is wrong! Thanks for playing");
+                    System.out.println("Sorry,Your answer is wrong! You have won $" + values[7]);
                 }
                 else {
+                    if (i == 11){
+                        System.out.println("Congratulations, you answered all of the questions correctly!"+ values[i]);
+                    }
                     correct = true;
+                    newValue = values[i];
+                    System.out.println(newValue);
                     i++;
-                    System.out.println("Your answer is correct!"+"\nPress Q to quit ir C to continue");
+                    System.out.println("Your answer is correct!"+"\nPress Q to quit or C to continue");
                     String userInput = scanner.nextLine();
                     if (userInput.equalsIgnoreCase("Q")){
                         break;
@@ -78,7 +90,6 @@ public class findAnswer {
         GameRules G=new GameRules();
         G.Greetings();
         getQuestions();
-
     }
 
 }
