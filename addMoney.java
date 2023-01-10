@@ -16,7 +16,7 @@ public class addMoney {
             return newvalue; // returns the newvalue
         }
     }
-    public void gameFinally(int getMoney, int question, boolean correct) {
+    public static void gameFinally(int getMoney, int question, boolean correct) {
         System.out.println("Thank you for playing 'Who Wants to Be a Millionaire'!");
         System.out.println("You have won $" + getMoney + ".");
         if (!correct) {
@@ -24,6 +24,10 @@ public class addMoney {
         } else {
             System.out.println("Congratulations, you answered all of the questions correctly!");
         }
+    }
+
+    public static void main(String[] args) {
+
     }
 }
 

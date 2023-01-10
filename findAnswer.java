@@ -2,6 +2,8 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class findAnswer {
+    static GameRules G=new GameRules();
+
     static int values [] = new int [] {500, 1000, 2000, 5000, 10000, 20000, 50000, 75000, 150000, 250000, 500000, 1000000};
     public static int newValue = 0;
     static Question question = new Question();
@@ -12,15 +14,15 @@ public class findAnswer {
 
     public static void getQuestions() throws IOException{
         int i = 0;
+        G.Greetings();
 
 
         do{
 
             if (i < 4){
-                question.randomQuestion(question.reduceRandomList(),"easy.txt");
+                if (i ==0){question.list.clear();question.randomNum();}
 
-//                System.out.println("Enter 'e' if you want hint! ");
-//                String userHintChoise = scanner.nextLine();
+                question.randomQuestion(i,"easy.txt");
                 Question.checkChoice();
 
                 if(!Question.checkAnswer()){
@@ -39,8 +41,9 @@ public class findAnswer {
                     }
                 }
             }
-            else if (i >= 4 && i <= 8){
-                question.randomQuestion(question.reduceRandomList(),"medium.txt");
+            else if (i >= 4 && i < 8){
+                if (i ==4){question.list.clear();question.randomNum();}
+                question.randomQuestion(i,"medium.txt");
                 Question.checkChoice();
 
                 if(!Question.checkAnswer()){
@@ -60,8 +63,9 @@ public class findAnswer {
                     }
                 }
             }
-            else if (i > 8){
-                Question.randomQuestion(Question.reduceRandomList(),"hard.txt");
+            else if (i >= 8){
+                if (i ==8){question.list.clear();question.randomNum();}
+                Question.randomQuestion(i-6,"hard.txt");
                 Question.checkChoice();
                 if(!Question.checkAnswer()){
                     correct = false;
@@ -70,10 +74,21 @@ public class findAnswer {
                 else {
                     if (i == 11){
                         System.out.println("Congratulations, you answered all of the questions correctly!"+ values[i]);
+                        System.out.println("Do you want to play again? Y/N");
+                        Scanner playAgain =new Scanner(System.in);
+                        String playAgainResponse = playAgain.nextLine();
+                        if(playAgainResponse.equalsIgnoreCase("Y")){
+                            getQuestions();
+                            G.Greetings();
+                        }
+                        else {
+                            System.out.println("Thank you for playing our game.");
+                            break;
+                        }
                     }
                     correct = true;
                     newValue = values[i];
-                    System.out.println(newValue);
+                    System.out.println("You have won $" + newValue);
                     i++;
                     System.out.println("Your answer is correct!"+"\nPress Q to quit or C to continue");
                     String userInput = scanner.nextLine();
@@ -87,8 +102,7 @@ public class findAnswer {
 
     }
     public static void main(String[] args) throws IOException {
-        GameRules G=new GameRules();
-        G.Greetings();
+
         getQuestions();
     }
 
