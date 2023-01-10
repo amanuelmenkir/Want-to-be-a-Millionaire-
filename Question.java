@@ -1,42 +1,27 @@
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 import java.util.Scanner;
 
 public class Question {
-    static int hintQuantity = 2;
-    static String list = "0123456789";             // this list has ten elements because we have ten questions in text files
-
-
+    static ArrayList<Integer> list = new ArrayList<Integer>();
+    static int hintQuantity = 3;        //Quantity of hints
     static boolean check_answer ;
     static String choice = "";
     static String answer = "";
     static String hint = "";
-    //This method returns random number and removes that number from list
-    public static String reduceRandomList(){
-        String a = String.valueOf(randomNumber(Question.list));
-        list= list.replace(a,"");      //randomly chosen number will be replaced with empty space
-        System.out.println(a);
-        System.out.println(list);
-
-        return a;
-    }
-    //This method generates random number from string
-    public static char randomNumber(String list){
-        Random rn = new Random();
-        int length = list.length();
-        char randomChar = '\0';
-        int randIndex = rn.nextInt(length) ;
-        while (randomChar==' ' || randomChar=='\0'){
-            randomChar = list.charAt(randIndex);
-            randIndex = rn.nextInt(length);
-        }
-        return randomChar;
+    //This method adds numbers from 0 to 10 in the list and shuffles to get random sequence
+    public static void randomNum() {
+        for (int i = 0; i < 10; i++) list.add(i);
+        Collections.shuffle(list);
     }
     //This method opens text file and reads questions based on random number
-    public static void randomQuestion( String i,String fileName) throws IOException {
-        int newi = Integer.valueOf(i) *7;           // random number is multiplied by seven to start reading from beginning of question
+    public static void randomQuestion( int i,String fileName) throws IOException {
+
+        int newi = list.get(i) *7;           // random number is multiplied by seven to start reading from beginning of question
         System.out.println(newi);
         for (int l = 0; l < 5; l++) {               // This for loop prints question and four choices
             String line = Files.readAllLines(Paths.get(String.valueOf(fileName))).get((newi+l));
@@ -80,19 +65,21 @@ public class Question {
         return check_answer;
     }
     public static void HintOption(int hintQuantity){
-        if(hintQuantity > 1){
+        if(hintQuantity > 2){
             System.out.println(hint);
             Question.hintQuantity -=1;
-            System.out.println("You have "+ hintQuantity  + " hints left");
+            System.out.println("You have "+ (hintQuantity -1) + " hints left");
+
 
         }
-        else if(hintQuantity ==1){
-            System.out.println("You have "+ hintQuantity  + " hint left");
-            Question.hintQuantity -=1;
+        else if(hintQuantity ==2){
             System.out.println(hint);
+            Question.hintQuantity -=1;
+            System.out.println("You have "+ (hintQuantity -1) + " hint left");
+
 
         }
-        else{
+        else {
             System.out.println("You can't use more hint.");
         }
     }
@@ -100,8 +87,7 @@ public class Question {
 
     public static void main(String[] args) throws IOException {
         // randomQuestion(Question.randomNumber(Question.reduceRandomList()),"easy.txt");
-        // System.out.println(checkChoice());
-        // reduceRandomList();
+
 
     }
 
