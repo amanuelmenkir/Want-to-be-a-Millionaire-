@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 public class FindAnswer {
@@ -6,7 +7,9 @@ public class FindAnswer {
     //static FindAnswer findAnswer = new FindAnswer();
 
     static int values [] = new int [] {500, 1000, 2000, 5000, 10000, 20000, 50000, 75000, 150000, 250000, 500000, 1000000};
-    public static int newValue = 0;
+    static DecimalFormat df = new DecimalFormat("#,###.00");
+
+    public static String newValue = "";
     static Question question = new Question();
     int hintQuantity = 2;
 
@@ -45,7 +48,7 @@ public class FindAnswer {
                 }
                 else {
                     correct = true;
-                    newValue = values[i];
+                    newValue = df.format(values[i]);
                     System.out.println("You have won $" + newValue);
                     i++;
                     System.out.println("Your answer is correct!"+"\nPress Q to quit or C to continue");
@@ -56,18 +59,22 @@ public class FindAnswer {
                 }
             }
             else if (i >= 4 && i < 8){
-                if (i ==4){question.list.clear();question.randomNum();}
+                if (i ==4){
+                    System.out.println("You have reached your 1st checkpoint! Minimum Prize amount is: $5,000.00");
+                    question.list.clear();
+                    question.randomNum();
+                }
                 question.randomQuestion(i,"medium.txt");
                 Question.checkChoice();
 
                 if(!Question.checkAnswer()){
                     correct = false;
-                    System.out.println("Sorry,Your answer is wrong! You have won $" + values[3]);
+                    System.out.println("Sorry, your answer is wrong! You still win $" + df.format(values[3]));
                     playAgain();
                 }
                 else {
                     correct = true;
-                    newValue = values[i];
+                    newValue = df.format(values[i]);
                     System.out.println("You have won $" + newValue);
                     i++;
                     System.out.println("Your answer is correct!"+"\nPress Q to quit or C to continue");
@@ -79,21 +86,26 @@ public class FindAnswer {
                 }
             }
             else if (i >= 8){
-                if (i ==8){question.list.clear();question.randomNum();}
+
+                if (i ==8){
+                    System.out.println("You have reached your 2nd checkpoint! Minimum Prize amount is: $75,000.00");
+                    question.list.clear();
+                    question.randomNum();
+                }
                 Question.randomQuestion(i-6,"hard.txt");
                 Question.checkChoice();
                 if(!Question.checkAnswer()){
                     correct = false;
-                    System.out.println("Sorry,Your answer is wrong! You have won $" + values[7]);
+                    System.out.println("Sorry. Your answer is wrong! You still win $" + df.format(values[7]));
                     playAgain();
                 }
                 else {
                     if (i == 11){
-                        System.out.println("Congratulations, you answered all of the questions correctly!"+ values[i]);
+                        System.out.println("Congratulations! You answered all of the questions correctly! You win $1,000,000.00");
                         playAgain();
                     }
                     correct = true;
-                    newValue = values[i];
+                    newValue = df.format(values[i]);
                     System.out.println("You have won $" + newValue);
                     i++;
                     System.out.println("Your answer is correct!"+"\nPress Q to quit or C to continue");

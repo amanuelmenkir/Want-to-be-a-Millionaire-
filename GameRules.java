@@ -3,12 +3,12 @@ import java.util.Scanner;
 public class GameRules {
 
 
-
+public String playerName = "";
 
         public GameRules(){
 
         }
-        public void Greetings(){
+        public static void Greetings(){
             Scanner sc = new Scanner(System.in);
 
 

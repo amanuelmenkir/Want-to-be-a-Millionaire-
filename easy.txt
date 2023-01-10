@@ -1,9 +1,9 @@
 What sort of animal is Walt Disney's Dumbo?
 a)Deer
-b)Rabbit
-c)Elephant
+b)Elephant
+c)Rabbit
 d)Donkey
-c
+b
 HINT: It is the largest living land animal.
 Which month of the year was named after Julius Caesar?
 a)January
@@ -27,11 +27,11 @@ d)I know this is a trick question, so NONE. Ha!
 c
 HINT: flip half and multiply
 Jimmy's father has three sons: Paul I and Paul II. Can you guess the name of the third son?
-a)Paul III
+a)Jimmy
 b)Jerin
-c)Jimmy
+c)Paul III
 d)None
-c
+a
 HINT: Look at the first word.
 How many months have 28 days?
 a)2
@@ -41,13 +41,13 @@ d)Depends on if there's a leap year or not
 c
 HINT: Not only 28 days.
 What is Luka's Last Name?
-a)Gorgasali
+a)Karkuzashvili
 b)Donic
-c)Karkuzashvili
+c)Gorgasali
 d)Kragaokglkali
-c
+a
 HINT: Try to remember hard
-A farmer has 17 goats, All of them but 8 died. How many goats are alive? 
+A farmer has 17 goats, All of them but 8 died. How many goats are alive?
 a)9
 b)8
 c)25
@@ -55,11 +55,11 @@ d)35
 b
 HINT: All of them but...
 What do Americans refer to ‘pizza’ as?
-a)Pizza
+a)Pie
 b)Piazza
-c)Pie
+c)Pizza
 d)Tomato pie
-c
+a
 Hint: Sounds like 3.14
 Which sea creature has three hearts?
 a)Whale
