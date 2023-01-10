@@ -1,8 +1,9 @@
 import java.io.IOException;
 import java.util.Scanner;
 
-public class findAnswer {
+public class FindAnswer {
     static GameRules G=new GameRules();
+    //static FindAnswer findAnswer = new FindAnswer();
 
     static int values [] = new int [] {500, 1000, 2000, 5000, 10000, 20000, 50000, 75000, 150000, 250000, 500000, 1000000};
     public static int newValue = 0;
@@ -11,11 +12,23 @@ public class findAnswer {
 
     static Scanner scanner = new Scanner(System.in);
     public static boolean correct;
+    public static void playAgain() throws IOException {
+        System.out.println("Do you want to play again? Y/N");
+        Scanner playAgain =new Scanner(System.in);
+        String playAgainResponse = playAgain.nextLine();
+        if(playAgainResponse.equalsIgnoreCase("Y")){
+            G.Greetings();
+            getQuestions();
+
+        }
+        else {
+            System.out.println("Thank you for playing our game.");
+            System.exit(0);
+        }
+    }
 
     public static void getQuestions() throws IOException{
         int i = 0;
-        G.Greetings();
-
 
         do{
 
@@ -28,6 +41,7 @@ public class findAnswer {
                 if(!Question.checkAnswer()){
                     correct = false;
                     System.out.println("Sorry, your answer is wrong! You win nothing. Thanks for playing! xD");
+                    playAgain();
                 }
                 else {
                     correct = true;
@@ -49,6 +63,7 @@ public class findAnswer {
                 if(!Question.checkAnswer()){
                     correct = false;
                     System.out.println("Sorry,Your answer is wrong! You have won $" + values[3]);
+                    playAgain();
                 }
                 else {
                     correct = true;
@@ -70,21 +85,12 @@ public class findAnswer {
                 if(!Question.checkAnswer()){
                     correct = false;
                     System.out.println("Sorry,Your answer is wrong! You have won $" + values[7]);
+                    playAgain();
                 }
                 else {
                     if (i == 11){
                         System.out.println("Congratulations, you answered all of the questions correctly!"+ values[i]);
-                        System.out.println("Do you want to play again? Y/N");
-                        Scanner playAgain =new Scanner(System.in);
-                        String playAgainResponse = playAgain.nextLine();
-                        if(playAgainResponse.equalsIgnoreCase("Y")){
-                            getQuestions();
-                            G.Greetings();
-                        }
-                        else {
-                            System.out.println("Thank you for playing our game.");
-                            break;
-                        }
+                        playAgain();
                     }
                     correct = true;
                     newValue = values[i];
@@ -102,7 +108,7 @@ public class findAnswer {
 
     }
     public static void main(String[] args) throws IOException {
-
+        G.Greetings();
         getQuestions();
     }
 

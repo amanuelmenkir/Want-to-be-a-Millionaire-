@@ -74,8 +74,4 @@ b)Alaska
 c)Iowa
 d)Idaho
 b
-<<<<<<< HEAD
 HINT: Try to type, and you'll get the answer.
-=======
-HINT: Try to type, and you'll get the answer.
->>>>>>> origin/main
