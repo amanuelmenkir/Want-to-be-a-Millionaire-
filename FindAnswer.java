@@ -31,102 +31,83 @@ public class FindAnswer {
             System.exit(0);
         }
     }
+    // method to get next question
+    public static void getNextQuestion(int i, String questionFile, String soundFile) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
+        question.randomQuestion(i,questionFile);
+        sounds.playSound(soundFile);
+        Question.checkChoice();
+    }
+    // Method for actions in case if answer is wrong
+    public static void afterWrongAnswer( String uniqueText) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
+        Sounds.playCorrectSound("wrongAnswer");
+        correct = false;
+        System.out.println("Sorry, your answer is wrong! " + uniqueText);
+        playAgain();
+    }
+
+    // Method for actions in case if answer is correct
+    public static void afterCorrectAnswer(int i) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
+        Sounds.playCorrectSound("correctAnswer");
+        correct = true;
+        newValue = df.format(values[i]);
+        System.out.println("You have won $" + newValue);
+
+        System.out.println("Your answer is correct!"+"\nIf you want to leave with the current prize money enter Q. Otherwise press Enter");                    String userInput = scanner.nextLine();
+        if (userInput.equalsIgnoreCase("Q")){
+            System.exit(0);
+        }
+    }
 
     public static void getQuestions() throws IOException, UnsupportedAudioFileException, LineUnavailableException {
         int i = 0;
 
         do{
-            Sounds.playCorrectSound("MainTheme");
+            Sounds.playCorrectSound("MainTheme");               //playing background sound
+
             System.out.println("This is question #" + (i + 1));
 
             if (i < 4){
-                if (i ==0){question.list.clear();question.randomNum();}
-
-                question.randomQuestion(i,"easy.txt");
-                sounds.playSound("easySound");
-                Question.checkChoice();
-
+                if (i ==0){question.list.clear();question.randomNum();}     //clear list and create new random list
+                getNextQuestion(i, "easy.txt", "easySound");
                 if(!Question.checkAnswer()){
-                    Sounds.playCorrectSound("wrongAnswer");
-                    correct = false;
-                    System.out.println("Sorry, your answer is wrong! You win nothing. Thanks for playing! xD");
-                    playAgain();
+                    afterWrongAnswer( "You win nothing. Thanks for playing! xD");
                 }
                 else {
-                    Sounds.playCorrectSound("correctAnswer");
-                    correct = true;
-                    newValue = df.format(values[i]);
-                    System.out.println("You have won $" + newValue);
+                    afterCorrectAnswer(i);
                     i++;
-                    System.out.println("Your answer is correct!"+"\nIf you want to leave with the current prize money enter Q. Otherwise enter C to continue");                    String userInput = scanner.nextLine();
-                    if (userInput.equalsIgnoreCase("Q")){
-                        System.exit(0);
-                    }
                 }
             }
             else if (i >= 4 && i < 8){
-
                 if (i ==4){
                     System.out.println("You have reached your 1st checkpoint! Minimum Prize amount is: $5,000.00");
-                    question.list.clear();
-                    question.randomNum();
+                    question.list.clear();question.randomNum();     //clear list and create new random list
                 }
-                question.randomQuestion(i,"medium.txt");
-                sounds.playSound("mediumSounds");
-
-                Question.checkChoice();
-
+                getNextQuestion(i, "medium.txt", "mediumSounds");
                 if(!Question.checkAnswer()){
-                    Sounds.playCorrectSound("wrongAnswer");
-                    correct = false;
-                    System.out.println("Sorry, your answer is wrong! You still win $" + df.format(values[3]));
-                    playAgain();
+                    afterWrongAnswer( "You still win $" + df.format(values[3]));
                 }
                 else {
-                    Sounds.playCorrectSound("correctAnswer");
-                    correct = true;
-                    newValue = df.format(values[i]);
-                    System.out.println("You have won $" + newValue);
+                    afterCorrectAnswer(i);
                     i++;
-                    System.out.println("Your answer is correct!"+"\nIf you want to leave with the current prize money enter Q. Otherwise enter C to continue");
-                    String userInput = scanner.nextLine();
-                    if (userInput.equalsIgnoreCase("Q")){
-                        System.exit(0);
-                    }
                 }
             }
             else if (i >= 8){
-
                 if (i ==8){
                     System.out.println("You have reached your 2nd checkpoint! Minimum Prize amount is: $75,000.00");
-                    question.list.clear();
-                    question.randomNum();
+                    question.list.clear();question.randomNum();     //clear list and create new random list
                 }
-                Question.randomQuestion(i-6,"hard.txt");
-                sounds.playSound("hardSounds");
-
-                Question.checkChoice();
+                getNextQuestion(i-6, "hard.txt", "hardSounds");
                 if(!Question.checkAnswer()){
-                    Sounds.playCorrectSound("wrongAnswer");
-                    correct = false;
-                    System.out.println("Sorry. Your answer is wrong! You still win $" + df.format(values[7]));
-                    playAgain();
+                    afterWrongAnswer( "You still win $" + df.format(values[7]));
                 }
                 else {
-                    Sounds.playCorrectSound("correctAnswer");
+
                     if (i == 11){
                         System.out.println("Congratulations! You answered all of the questions correctly! You win $1,000,000.00");
                         playAgain();
                     }
-                    correct = true;
-                    newValue = df.format(values[i]);
-                    System.out.println("You have won $" + newValue);
+                    afterCorrectAnswer(i);
                     i++;
-                    System.out.println("Your answer is correct!"+"\nIf you want to leave with the current prize money enter Q. Otherwise enter C to continue");
-                    String userInput = scanner.nextLine();
-                    if (userInput.equalsIgnoreCase("Q")){
-                        System.exit(0);
-                    }
                 }
             }
         }
