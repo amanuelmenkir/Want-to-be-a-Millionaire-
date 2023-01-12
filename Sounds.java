@@ -15,6 +15,14 @@ public class Sounds {
         Clip clip = AudioSystem.getClip();
         clip.open(audionStream);
         clip.start();
-       // String response = scanner.next();
+    }
+    public static void playCorrectSound(String answer) throws LineUnavailableException, UnsupportedAudioFileException, IOException
+    {
+        String correctSound = "correctSound/" + answer + ".wav";
+        File file = new File(correctSound);
+        AudioInputStream audionStream = AudioSystem.getAudioInputStream(file);
+        Clip clip = AudioSystem.getClip();
+        clip.open(audionStream);
+        clip.start();
     }
 }

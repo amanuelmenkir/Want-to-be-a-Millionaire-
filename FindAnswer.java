@@ -7,11 +7,8 @@ import java.util.Scanner;
 public class FindAnswer {
     static GameRules G=new GameRules();
     static Sounds sounds = new Sounds();
-    //static FindAnswer findAnswer = new FindAnswer();
-
     static int values [] = new int [] {500, 1000, 2000, 5000, 10000, 20000, 50000, 75000, 150000, 250000, 500000, 1000000};
     static DecimalFormat df = new DecimalFormat("#,###.00");
-
     public static String newValue = "";
     static Question question = new Question();
     int hintQuantity = 2;
@@ -39,7 +36,9 @@ public class FindAnswer {
         int i = 0;
 
         do{
+            Sounds.playCorrectSound("MainTheme");
             System.out.println("This is question #" + (i + 1));
+
             if (i < 4){
                 if (i ==0){question.list.clear();question.randomNum();}
 
@@ -48,19 +47,19 @@ public class FindAnswer {
                 Question.checkChoice();
 
                 if(!Question.checkAnswer()){
+                    Sounds.playCorrectSound("wrongAnswer");
                     correct = false;
                     System.out.println("Sorry, your answer is wrong! You win nothing. Thanks for playing! xD");
                     playAgain();
                 }
                 else {
+                    Sounds.playCorrectSound("correctAnswer");
                     correct = true;
                     newValue = df.format(values[i]);
                     System.out.println("You have won $" + newValue);
                     i++;
-                    System.out.println("Your answer is correct!"+"\nIf you want to leave with the current prize money enter Q. Otherwise enter C to continue");
-                    String userInput = scanner.nextLine();
+                    System.out.println("Your answer is correct!"+"\nIf you want to leave with the current prize money enter Q. Otherwise enter C to continue");                    String userInput = scanner.nextLine();
                     if (userInput.equalsIgnoreCase("Q")){
-                        System.out.println("Thank you for playing our game!! You have won $" + newValue);
                         System.exit(0);
                     }
                 }
@@ -78,11 +77,13 @@ public class FindAnswer {
                 Question.checkChoice();
 
                 if(!Question.checkAnswer()){
+                    Sounds.playCorrectSound("wrongAnswer");
                     correct = false;
                     System.out.println("Sorry, your answer is wrong! You still win $" + df.format(values[3]));
                     playAgain();
                 }
                 else {
+                    Sounds.playCorrectSound("correctAnswer");
                     correct = true;
                     newValue = df.format(values[i]);
                     System.out.println("You have won $" + newValue);
@@ -90,7 +91,6 @@ public class FindAnswer {
                     System.out.println("Your answer is correct!"+"\nIf you want to leave with the current prize money enter Q. Otherwise enter C to continue");
                     String userInput = scanner.nextLine();
                     if (userInput.equalsIgnoreCase("Q")){
-                        System.out.println("Thank you for playing our game!! You have won $" + newValue);
                         System.exit(0);
                     }
                 }
@@ -107,11 +107,13 @@ public class FindAnswer {
 
                 Question.checkChoice();
                 if(!Question.checkAnswer()){
+                    Sounds.playCorrectSound("wrongAnswer");
                     correct = false;
                     System.out.println("Sorry. Your answer is wrong! You still win $" + df.format(values[7]));
                     playAgain();
                 }
                 else {
+                    Sounds.playCorrectSound("correctAnswer");
                     if (i == 11){
                         System.out.println("Congratulations! You answered all of the questions correctly! You win $1,000,000.00");
                         playAgain();
@@ -120,7 +122,7 @@ public class FindAnswer {
                     newValue = df.format(values[i]);
                     System.out.println("You have won $" + newValue);
                     i++;
-                    System.out.println("Your answer is correct!"+"\nPress Q to quit or C to continue");
+                    System.out.println("Your answer is correct!"+"\nIf you want to leave with the current prize money enter Q. Otherwise enter C to continue");
                     String userInput = scanner.nextLine();
                     if (userInput.equalsIgnoreCase("Q")){
                         System.exit(0);
@@ -131,9 +133,4 @@ public class FindAnswer {
         while(correct);
 
     }
-    public static void main(String[] args) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
-        G.Greetings();
-        getQuestions();
-    }
-
 }
