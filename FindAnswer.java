@@ -39,7 +39,7 @@ public class FindAnswer {
         int i = 0;
 
         do{
-
+            System.out.println("This is question #" + (i + 1));
             if (i < 4){
                 if (i ==0){question.list.clear();question.randomNum();}
 
@@ -57,9 +57,10 @@ public class FindAnswer {
                     newValue = df.format(values[i]);
                     System.out.println("You have won $" + newValue);
                     i++;
-                    System.out.println("Your answer is correct!"+"\nPress Q to quit or C to continue");
+                    System.out.println("Your answer is correct!"+"\nIf you want to leave with the current prize money enter Q. Otherwise enter C to continue");
                     String userInput = scanner.nextLine();
                     if (userInput.equalsIgnoreCase("Q")){
+                        System.out.println("Thank you for playing our game!! You have won $" + newValue);
                         System.exit(0);
                     }
                 }
@@ -86,9 +87,10 @@ public class FindAnswer {
                     newValue = df.format(values[i]);
                     System.out.println("You have won $" + newValue);
                     i++;
-                    System.out.println("Your answer is correct!"+"\nPress Q to quit or C to continue");
+                    System.out.println("Your answer is correct!"+"\nIf you want to leave with the current prize money enter Q. Otherwise enter C to continue");
                     String userInput = scanner.nextLine();
                     if (userInput.equalsIgnoreCase("Q")){
+                        System.out.println("Thank you for playing our game!! You have won $" + newValue);
                         System.exit(0);
                     }
                 }

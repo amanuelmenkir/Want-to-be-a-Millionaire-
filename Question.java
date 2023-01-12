@@ -87,10 +87,11 @@ public class Question {
             System.out.println(hint);
             Question.hintQuantity -=1;
             System.out.println("You have "+ (hintQuantity -1) + " hint left");
-
-
-        }
-        else {
+        }else if (hintQuantity == 1) {
+            System.out.println(hint);
+            Question.hintQuantity -= 1;
+            System.out.println("No more hints remain :(");
+        } else {
             System.out.println("You can't use more hint.");
         }
     }

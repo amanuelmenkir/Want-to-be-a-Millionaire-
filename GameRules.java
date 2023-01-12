@@ -12,11 +12,12 @@ public class GameRules {
             String playerName = sc.nextLine();
 
             System.out.println("Hello "+playerName+"! "+ "Here are the rules: " );
-            System.out.println("In order to play this game, you need to enter your name first" +
-                    "\nOnce the questions pops up you can ask for hints, but you will get only 3 hints throughout the whole game"+
-                    "\nTo advance towards the next levels, you need to answer questions correctly, after each " +
-                    "correctly answered question,\nyou will need to decide to keep your score and leave or to keep " +
-                    "going to next rounds.\nYou win when you reach one million dollars.\n");
+            System.out.println("In order to win this game, you need to answer 12 questions correctly." +
+                    "\nOnce the question pops up you can ask for hints, but you will only receive 3 hints throughout the whole game." +
+                    "\nWe have 3 levels; easy, medium, and hard. " +
+                    "\nTo advance towards the next level, you need to answer questions correctly. After each correctly answered question," +
+                    "\nyou will need to decide to leave and keep your prize or to keep going to the next rounds." +
+                    "\nYou win when you reach one million dollars. Good luck!\n");
 
             System.out.println("Press enter to start");
               String ready = sc.nextLine();
