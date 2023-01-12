@@ -1,11 +1,14 @@
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+import java.io.IOException;
 import java.util.Scanner;
 public class GameRules {
 
     public static void playAgainQuestion(){
 
     }
-        public void Greetings(){
+        public void Greetings() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
             Scanner sc = new Scanner(System.in);
             System.out.println("Welcome! Ready to Become A Millionaire?");
             System.out.println("Enter your name");
@@ -25,8 +28,5 @@ public class GameRules {
 
 
         }
-
-    public void greeting() {
-    }
 }
 
