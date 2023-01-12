@@ -1,9 +1,12 @@
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.Scanner;
 
 public class FindAnswer {
     static GameRules G=new GameRules();
+    static Sounds sounds = new Sounds();
     //static FindAnswer findAnswer = new FindAnswer();
 
     static int values [] = new int [] {500, 1000, 2000, 5000, 10000, 20000, 50000, 75000, 150000, 250000, 500000, 1000000};
@@ -15,7 +18,7 @@ public class FindAnswer {
 
     static Scanner scanner = new Scanner(System.in);
     public static boolean correct;
-    public static void playAgain() throws IOException {
+    public static void playAgain() throws IOException, UnsupportedAudioFileException, LineUnavailableException {
         System.out.println("Do you want to play again? Y/N");
         Scanner playAgain =new Scanner(System.in);
         String playAgainResponse = playAgain.nextLine();
@@ -30,15 +33,17 @@ public class FindAnswer {
         }
     }
 
-    public static void getQuestions() throws IOException{
+    public static void getQuestions() throws IOException, UnsupportedAudioFileException, LineUnavailableException {
         int i = 0;
 
         do{
 
             if (i < 4){
                 if (i ==0){question.list.clear();question.randomNum();}
+                G.Greetings();
 
                 question.randomQuestion(i,"easy.txt");
+                sounds.playSound("easySound");
                 Question.checkChoice();
 
                 if(!Question.checkAnswer()){
@@ -59,12 +64,15 @@ public class FindAnswer {
                 }
             }
             else if (i >= 4 && i < 8){
+
                 if (i ==4){
                     System.out.println("You have reached your 1st checkpoint! Minimum Prize amount is: $5,000.00");
                     question.list.clear();
                     question.randomNum();
                 }
                 question.randomQuestion(i,"medium.txt");
+                sounds.playSound("mediumSounds");
+
                 Question.checkChoice();
 
                 if(!Question.checkAnswer()){
@@ -93,6 +101,8 @@ public class FindAnswer {
                     question.randomNum();
                 }
                 Question.randomQuestion(i-6,"hard.txt");
+                sounds.playSound("hardSounds");
+
                 Question.checkChoice();
                 if(!Question.checkAnswer()){
                     correct = false;
@@ -119,8 +129,8 @@ public class FindAnswer {
         while(correct);
 
     }
-    public static void main(String[] args) throws IOException {
-        G.Greetings();
+    public static void main(String[] args) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+
         getQuestions();
     }
 

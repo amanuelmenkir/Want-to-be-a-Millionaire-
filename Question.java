@@ -1,3 +1,5 @@
+import javax.sound.sampled.*;
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -9,6 +11,7 @@ import java.util.Scanner;
 public class Question {
     static ArrayList<Integer> list = new ArrayList<Integer>();
     static int hintQuantity = 3;        //Quantity of hints
+     static int newi=0;
     static boolean check_answer ;
     static String choice = "";
     static String answer = "";
@@ -18,11 +21,21 @@ public class Question {
         for (int i = 0; i < 10; i++) list.add(i);
         Collections.shuffle(list);
     }
+    public static void playSound() throws LineUnavailableException, UnsupportedAudioFileException, IOException
+    {
+        Scanner scanner = new Scanner(System.in);
+       String music = "src/sounds/" + String.valueOf(newi)+".wav";
+        File file = new File(music);
+        AudioInputStream audionStream = AudioSystem.getAudioInputStream(file);
+        Clip clip = AudioSystem.getClip();
+        clip.open(audionStream);
+        clip.start();
+        String response = scanner.next();
+    }
     //This method opens text file and reads questions based on random number
     public static void randomQuestion( int i,String fileName) throws IOException {
 
-        int newi = list.get(i) *7;           // random number is multiplied by seven to start reading from beginning of question
-        System.out.println(newi);
+        newi = list.get(i) *7;           // random number is multiplied by seven to start reading from beginning of question
         for (int l = 0; l < 5; l++) {               // This for loop prints question and four choices
             String line = Files.readAllLines(Paths.get(String.valueOf(fileName))).get((newi+l));
             System.out.println(line);
@@ -42,17 +55,17 @@ public class Question {
     }
     public static void checkChoice(){
         getChoice();
+
         if(choice.equalsIgnoreCase("1")){
             HintOption(hintQuantity);
             getChoice();
-
         }
         else if (choice.equalsIgnoreCase("a")||choice.equalsIgnoreCase("b")||
         choice.equalsIgnoreCase("c") || choice.equalsIgnoreCase("d")){
             checkAnswer();
         }
         else {
-            System.out.println("Please enter valid input");
+            System.out.println("Please enter 'a','b','c' or 'd'.");
             checkChoice();
         }
 
@@ -69,8 +82,6 @@ public class Question {
             System.out.println(hint);
             Question.hintQuantity -=1;
             System.out.println("You have "+ (hintQuantity -1) + " hints left");
-
-
         }
         else if(hintQuantity ==2){
             System.out.println(hint);
@@ -83,13 +94,4 @@ public class Question {
             System.out.println("You can't use more hint.");
         }
     }
-
-
-    public static void main(String[] args) throws IOException {
-        // randomQuestion(Question.randomNumber(Question.reduceRandomList()),"easy.txt");
-
-
-    }
-
-
 }

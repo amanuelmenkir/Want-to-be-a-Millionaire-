@@ -1,19 +1,9 @@
 
 import java.util.Scanner;
 public class GameRules {
-
-
-public String playerName = "";
-
-        public GameRules(){
-
-        }
-        public static void Greetings(){
+        public void Greetings(){
             Scanner sc = new Scanner(System.in);
-
-
             System.out.println("Welcome! Ready to Become A Millionaire?");
-
             System.out.println("Enter your name");
             String playerName = sc.nextLine();
 
@@ -22,15 +12,15 @@ public String playerName = "";
                     "\nOnce the questions pops up you can ask for hints, but you will get only 3 hints throughout the whole game"+
                     "\nTo advance towards the next levels, you need to answer questions correctly, after each " +
                     "correctly answered question,\nyou will need to decide to keep your score and leave or to keep " +
-                    "going to next rounds.\nYou win when you reach one million dollars.");
+                    "going to next rounds.\nYou win when you reach one million dollars.\n");
+
+
 
 
 
         }
-        public static void main(String[] args) {
-            GameRules myObj = new GameRules();
-            myObj.Greetings();
-        }
 
+    public void greeting() {
     }
+}
 

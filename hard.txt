@@ -61,13 +61,6 @@ c)Bill Clinton
 d)James Buchanan
 d
 HINT: This happened in 1857.
-which bird was chosen as national bird of Israel in 2008?
-a)Owl
-b)Eagle
-c)Hoopoe
-d)Crow
-c
-HINT: These birds are colourful.
 What is the only state that can be typed on one row of keys on a QWERTY keyboard?
 a)Utah
 b)Alaska
@@ -75,3 +68,11 @@ c)Iowa
 d)Idaho
 b
 HINT: Try to type, and you'll get the answer.
+which bird was chosen as national bird of Israel in 2008?
+a)Owl
+b)Eagle
+c)Hoopoe
+d)Crow
+c
+HINT: These birds are colourful.
+

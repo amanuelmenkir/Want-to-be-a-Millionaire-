@@ -19,13 +19,13 @@ c)5
 d)4
 d
 HINT: answer is an even number.
-Divide 30 by half and add ten. 
-a)40.5
-b)50
-c)70
-d)I know this is a trick question, so NONE. Ha!
-c
-HINT: flip half and multiply
+The diagonals of a rhombus are 30 cm and 40 cm long. Find its side.
+a)40.5 cm
+b)25 cm
+c)30 cm
+d)15 cm
+b
+HINT: side = (p^2+q^2)/2 p=diagonal #1, q = diagonal #2
 Jimmy's father has three sons: Paul I and Paul II. Can you guess the name of the third son?
 a)Jimmy
 b)Jerin
