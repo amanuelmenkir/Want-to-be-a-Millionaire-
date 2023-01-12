@@ -1,6 +1,10 @@
 
 import java.util.Scanner;
 public class GameRules {
+
+    public static void playAgainQuestion(){
+
+    }
         public void Greetings(){
             Scanner sc = new Scanner(System.in);
             System.out.println("Welcome! Ready to Become A Millionaire?");
@@ -14,7 +18,8 @@ public class GameRules {
                     "correctly answered question,\nyou will need to decide to keep your score and leave or to keep " +
                     "going to next rounds.\nYou win when you reach one million dollars.\n");
 
-
+            System.out.println("Press enter to start");
+              String ready = sc.nextLine();
 
 
 

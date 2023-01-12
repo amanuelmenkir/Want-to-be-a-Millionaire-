@@ -18,12 +18,14 @@ public class FindAnswer {
 
     static Scanner scanner = new Scanner(System.in);
     public static boolean correct;
-    public static void playAgain() throws IOException, UnsupportedAudioFileException, LineUnavailableException {
+    public static void playAgain() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         System.out.println("Do you want to play again? Y/N");
         Scanner playAgain =new Scanner(System.in);
         String playAgainResponse = playAgain.nextLine();
         if(playAgainResponse.equalsIgnoreCase("Y")){
-            G.Greetings();
+            System.out.println("Enter your name: ");
+            Scanner sc = new Scanner(System.in);
+            String playerName = sc.nextLine();
             getQuestions();
 
         }
@@ -40,7 +42,6 @@ public class FindAnswer {
 
             if (i < 4){
                 if (i ==0){question.list.clear();question.randomNum();}
-                G.Greetings();
 
                 question.randomQuestion(i,"easy.txt");
                 sounds.playSound("easySound");
@@ -59,7 +60,7 @@ public class FindAnswer {
                     System.out.println("Your answer is correct!"+"\nPress Q to quit or C to continue");
                     String userInput = scanner.nextLine();
                     if (userInput.equalsIgnoreCase("Q")){
-                        break;
+                        System.exit(0);
                     }
                 }
             }
@@ -86,10 +87,9 @@ public class FindAnswer {
                     System.out.println("You have won $" + newValue);
                     i++;
                     System.out.println("Your answer is correct!"+"\nPress Q to quit or C to continue");
-
                     String userInput = scanner.nextLine();
                     if (userInput.equalsIgnoreCase("Q")){
-                        break;
+                        System.exit(0);
                     }
                 }
             }
@@ -121,7 +121,7 @@ public class FindAnswer {
                     System.out.println("Your answer is correct!"+"\nPress Q to quit or C to continue");
                     String userInput = scanner.nextLine();
                     if (userInput.equalsIgnoreCase("Q")){
-                        break;
+                        System.exit(0);
                     }
                 }
             }
@@ -130,7 +130,7 @@ public class FindAnswer {
 
     }
     public static void main(String[] args) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
-
+        G.Greetings();
         getQuestions();
     }
 
