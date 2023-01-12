@@ -11,7 +11,7 @@ import java.util.Scanner;
 public class Question {
     static ArrayList<Integer> list = new ArrayList<Integer>();
     static int hintQuantity = 3;        //Quantity of hints
-     static int newi=0;
+    static int newi=0;
     static boolean check_answer ;
     static String choice = "";
     static String answer = "";
@@ -20,17 +20,6 @@ public class Question {
     public static void randomNum() {
         for (int i = 0; i < 10; i++) list.add(i);
         Collections.shuffle(list);
-    }
-    public static void playSound() throws LineUnavailableException, UnsupportedAudioFileException, IOException
-    {
-        Scanner scanner = new Scanner(System.in);
-       String music = "src/sounds/" + String.valueOf(newi)+".wav";
-        File file = new File(music);
-        AudioInputStream audionStream = AudioSystem.getAudioInputStream(file);
-        Clip clip = AudioSystem.getClip();
-        clip.open(audionStream);
-        clip.start();
-        String response = scanner.next();
     }
     //This method opens text file and reads questions based on random number
     public static void randomQuestion( int i,String fileName) throws IOException {
